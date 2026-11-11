@@ -3,99 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لسمير ❤️</title>
+<title>For Samir ❤️</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#fff0f3;font-family:system-ui,sans-serif;color:#4a1a2a;text-align:center;padding:20px}
-.card{background:white;border-radius:20px;padding:18px;margin:18px auto;max-width:520px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
-img,video{width:100%;border-radius:15px;margin-top:12px}
-audio{width:100%;margin-top:12px}
-button{background:#e6396b;color:white;border:0;padding:14px 28px;border-radius:30px;font-size:18px;cursor:pointer;margin:10px}
-h1{font-size:30px;margin:15px 0 5px}
-p{font-size:18px;line-height:1.8}
-.heart{font-size:50px;animation:beat 1s infinite}
-@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-#lock{max-width:520px;margin:60px auto;background:white;padding:25px;border-radius:20px}
-#lock input{width:100%;padding:13px;border-radius:30px;border:1px solid #ddd;text-align:center;font-size:16px;margin-top:15px}
-#letter{display:none}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#ffeef3;color:#333;text-align:center;overflow-x:hidden}
+.hidden{display:none!important}
+.lock{padding:50px 20px}
+.lock input{padding:13px;width:85%;max-width:300px;border:2px solid #ff8fab;border-radius:20px;text-align:center;font-size:18px;outline:none}
+.lock button{background:#ff5e8a;color:#fff;border:none;padding:13px 35px;border-radius:20px;font-size:18px;margin-top:15px;cursor:pointer}
+.card{background:#fff;margin:18px auto;padding:22px;border-radius:25px;width:92%;max-width:500px;box-shadow:0 5px 20px #ffccd5;text-align:right;line-height:1.9}
+.card h2{text-align:center;color:#ff5e8a;margin-top:0}
+.card p{font-size:17px}
+img,video{width:100%;border-radius:20px;margin-top:10px}
+audio{width:100%;margin-top:10px}
+.heart{position:fixed;top:-20px;animation:fall linear infinite;font-size:22px;z-index:1}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.big{font-size:38px}
+.btn{background:#ff5e8a;color:#fff;border:none;padding:12px 25px;border-radius:20px;font-size:17px;cursor:pointer}
 </style>
 </head>
 <body>
 
-<div id="lock">
-<div class="heart">❤️</div>
+<div id="lock" class="lock">
+<div class="big">❤️</div>
 <h1>For Samir</h1>
-<p>اكتب الباسوورد يا سمير</p>
-<input id="pass" placeholder="اكتب الباسوورد">
-<br><button onclick="openLetter()">افتح الجواب 💌</button>
-<p id="err" style="color:red"></p>
+<p>اكتب الباسوورد عشان تفتح الجواب</p>
+<input type="password" id="pass" placeholder="الباسوورد">
+<br><button onclick="check()">افتح الجواب 💌</button>
+<p id="wrong" style="color:red"></p>
+<p style="font-size:13px;color:#999">اكتب اسمي يا حبيبي 🥹</p>
 </div>
 
-<div id="letter">
-<div class="heart">❤️</div>
-<h1>سمير، 11/11 مش يوم عادي</h1>
-<p>ده اليوم اللي عرفت فيه إن قلبي ليه بيت تاني.. عندك انت</p>
+<div id="site" class="hidden">
+<h1 style="color:#ff5e8a">For Samir ❤️</h1>
+<p>11/11 يومنا المميز 🥹</p>
 
-<div class="card">
-<h2>🎵 أغنيتنا</h2>
-<button onclick="document.getElementById('song').play()">▶️ شغّل الأغنية</button>
-<audio id="song" controls loop></audio>
+<div class="card" style="text-align:center">
+<h2>بدايتنا 💗</h2>
+<p style="font-size:19px">💖 سوا من 04-08-2024 💖</p>
+<div style="display:flex;justify-content:center;gap:8px;margin:15px 0">
+<div style="background:#fff0f3;padding:12px 8px;border-radius:15px;min-width:60px"><b id="dDays" style="font-size:22px;color:#ff5e8a">0</b><br><small>يوم</small></div>
+<div style="background:#fff0f3;padding:12px 8px;border-radius:15px;min-width:60px"><b id="dHours" style="font-size:22px;color:#ff5e8a">0</b><br><small>ساعة</small></div>
+<div style="background:#fff0f3;padding:12px 8px;border-radius:15px;min-width:60px"><b id="dMins" style="font-size:22px;color:#ff5e8a">0</b><br><small>دقيقة</small></div>
+<div style="background:#fff0f3;padding:12px 8px;border-radius:15px;min-width:60px"><b id="dSecs" style="font-size:22px;color:#ff5e8a">0</b><br><small>ثانية</small></div>
+</div>
+<p>❤️ كل ثانية بتعدي وانت في قلبي ❤️</p>
 </div>
 
-<div class="card">
-<h2>📸 صورنا</h2>
-<div id="images"><p>جارِ تحميل الصور...</p></div>
-</div>
-
-<div class="card">
-<h2>🎬 فيديوهاتنا</h2>
-<div id="videos"><p>جارِ تحميل الفيديوهات...</p></div>
+<div class="card" style="text-align:center">
+<h2>ذكرياتنا ✨</h2>
+<p style="background:#fff0f3;padding:12px;border-radius:15px">❤️ بدايتنا<br><b>04-08-2024</b></p>
+<p style="background:#fff0f3;padding:12px;border-radius:15px">❤️ يوم ما قولتلك بحبك<br><b>21-07-2025</b></p>
+<p style="background:#fff0f3;padding:12px;border-radius:15px">❤️ اول خروجة لينا<br><b>26-11-2025</b></p>
+<p style="background:#fff0f3;padding:12px;border-radius:15px">❤️ 11-11 يومنا المميز</p>
 </div>
 
 <div class="card">
 <h2>💌 رسالتي ليك</h2>
-<p>هيفضل دا الطلب الأهم والأعظم لأي علاقة..<br>
-تفضل جنبي، تفضل تحبني، وتفضل تختارني كل يوم.<br><br>
-أنا بحبك يا سمير، ومش عايزة حاجة من الدنيا غيرك.<br>
+<p>حبيبي انا مش هقولك بحبك زي ماكل الناس بتقولها لأن كلمه بحبك دي قليله قوي علي اللي جوايا ليك ، انت مش حبيبي وبس انت الحته اللي كانت ناقصه مني وكملت ب وجودك انت الامان اللي بدور عليه في وسط كل دوشه الدنيا ،<br><br>
+لو هيسألوني يعني اي حب ؟ هقولهم يعني اشوف اسمك في قلبي يدق قبل ماعقلي يستوعب ، يعني ابقي زعلانه ومضايقه وأول ما اسمع صوتك أنسي انا كنت زعلانه ليه.<br><br>
+انا مش عاوزه من الدنيا دي غيرك ولا عيني هتشوف غيرك ، خليك عارف انك واخد قلبي كله ومش هتعرف ترجعه تاني لأنه خلاص بقي بيتك ومكانك ، بحبك حب محدش حبه لحد قبل كده... بحبك انت وبس ،<br><br>
+وعارف احلي حاجه فيك ايه إنك بتخليني احب نفسي وأنا معاك ، بتخليني احس اني حلوه ومميزه لمجرد انك اخترتني انا من بين كل الناس دي .<br><br>
+انا كل يوم بدعي ربنا يخليك ليا وميحرمنيش من صوتك ولا ضحكتك اللي بتنور يومي انت مش عارف ضحكتك دي بتعمل فيا ايه بتخليني انسي الدنيا ومافيها ، لو الدنيا كلها سابتني ، كفايه انك انت معايا ، ولو الدنيا كلها معايا ومش معايا انت ، فأنا ولا حاجه .<br><br>
+انت حلمي اللي مكنتش احلم بيه عشان كنت فاكراه كبير عليا لحد ماجيت انت وحققته ، خليك جنبي عالطول واوعي في يوم تبعد ، عشان انا من غيرك بتوه .<br><br>
+بحبگ يا نور عيني 🥹♥️🫂🌏<br>
+بحبگگگگگگ قوووووي وبعشقك ي روح قلبي 🥹♥️🫂🌏<br><br>
 <b>- ميادة ❤️</b></p>
 </div>
+
+<div class="card">
+<h2>💌 رسالة سمير ليا</h2>
+<p>11/11 مش مجرد يوم مميز ده يوم حبيت أستغله وأقولك إن وجودك في حياتي من أحلى الحاجات اللي حصلتلي يمكن الكلام مهما كان حلو مش هيوصف إنتِ بالنسبالي إيه بس أنا بجد مبسوط إنك في حياتي وبحب تفاصيلك وطريقتك وضحكتك وكل حاجة صغيرة بتميزك.<br><br>
+أتمنى دايمًا أشوفك مبسوطة وأكون سبب في ضحكتك ولو بحاجة بسيطة ويا رب الأيام الجاية تجمعنا على حاجات حلوة أكتر وتفضلي دايمًا من أجمل الناس اللي عرفتها. ❤️</p>
+</div>
+
+<div class="card" style="text-align:center">
+<h2>📸 صورنا</h2>
+<img src="1.jpg" alt="صورتنا">
+<img src="2.jpg" alt="صورتنا">
+<img src="3.jpg" alt="صورتنا">
+</div>
+
+<div class="card" style="text-align:center">
+<h2>🎬 فيديو لينا</h2>
+<video controls src="video.mp4"></video>
+</div>
+
+<div class="card" style="text-align:center">
+<h2>🎵 أغنيتنا</h2>
+<audio controls src="song.mp3"></audio>
+<p>يا نصيبي 💗</p>
+</div>
+
+<div style="padding:20px">
+<button class="btn" onclick="alert('بحبك يا سمير ❤️')">دوس هنا 💗</button>
+<p>اتعمل بحب من ميادة لسمير ❤️</p>
+</div>
+
 </div>
 
 <script>
-function openLetter(){
-  if(document.getElementById('pass').value.trim()==""){
-    document.getElementById('err').innerText="اكتب الباسوورد الأول";
-    return;
+function check(){
+  let p = document.getElementById("pass").value;
+  if(p=="samer"){
+    document.getElementById("lock").classList.add("hidden");
+    document.getElementById("site").classList.remove("hidden");
+    startHearts();
+  } else {
+    document.getElementById("wrong").innerText = "الباسوورد غلط يا حبيبي 🥺 حاول تاني";
   }
-  document.getElementById('lock').style.display="none";
-  document.getElementById('letter').style.display="block";
 }
-const user="mayada952007-png";
-const repo="samer-html-";
-fetch(`https://api.github.com/repos/${user}/${repo}/contents/`)
-.then(r=>r.json())
-.then(files=>{
-  let imgs = files.filter(f=>/\.(png|jpg|jpeg)$/i.test(f.name));
-  let vids = files.filter(f=>/\.mp4$/i.test(f.name));
-  let songs = files.filter(f=>/\.(m4a|mp3|wav)$/i.test(f.name));
-  if(songs.length) document.getElementById('song').src = songs[0].download_url;
-  let imgBox = document.getElementById('images');
-  imgBox.innerHTML = "";
-  imgs.forEach(f=>{
-    let im = document.createElement('img');
-    im.src = f.download_url;
-    imgBox.appendChild(im);
-  });
-  let vidBox = document.getElementById('videos');
-  vidBox.innerHTML = "";
-  vids.forEach(f=>{
-    let v = document.createElement('video');
-    v.src = f.download_url;
-    v.controls = true;
-    v.playsInline = true;
-    vidBox.appendChild(v);
-  });
-});
+function updateCounter(){
+  let start = new Date("2024-08-04T00:00:00");
+  let now = new Date();
+  let diff = now - start;
+  let days = Math.floor(diff / (1000*60*60*24));
+  let hours = Math.floor((diff / (1000*60*60)) % 24);
+  let mins = Math.floor((diff / (1000*60)) % 60);
+  let secs = Math.floor((diff / 1000) % 60);
+  document.getElementById("dDays").innerText = days;
+  document.getElementById("dHours").innerText = hours;
+  document.getElementById("dMins").innerText = mins;
+  document.getElementById("dSecs").innerText = secs;
+}
+setInterval(updateCounter, 1000);
+updateCounter();
+function startHearts(){
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerText=["❤️","💗","💖","🥹"][Math.floor(Math.random()*4)];
+    h.style.left=Math.random()*90+"vw";
+    h.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },600);
+}
 </script>
 </body>
 </html>
